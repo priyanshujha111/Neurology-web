@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# TODO: the site domain is not set yet. Run `SITE_URL=https://<your-domain> npm run sitemap`;
+# it writes public/sitemap.xml and replaces this file with one that ends in:
+# Sitemap: https://<your-domain>/sitemap.xml
