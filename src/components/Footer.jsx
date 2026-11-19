@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, coursesOfType, legalLinks, mainPages, socials } from '../data/siteLinks.js'
+import { ArrowUpRight } from 'lucide-react'
+import { DISCLAIMER, EMAIL, PHONE_DISPLAY, PHONE_HREF, coursesOfType, legalLinks, mainPages, socials } from '../data/siteLinks.js'
 
 // Same logo the Navbar uses; falls back to the "MGA" box if it fails to load
 const LOGO_URL = 'https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png'
@@ -29,6 +30,11 @@ const focusRing =
   'rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink'
 
 const linkClass = `${focusRing} text-sm text-slate-300 underline decoration-transparent decoration-1 underline-offset-4 transition-colors hover:text-white hover:decoration-teal-brand motion-reduce:transition-none`
+
+const ALL_COURSES_URL = 'https://medicalglobalacademy.com/courses'
+
+// Small outline button in the footer's teal accent
+const allCoursesButtonClass = `${focusRing} group inline-flex items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-teal-brand/60 px-3.5 py-1.5 text-[13px] font-semibold text-white transition-[color,background-color,border-color,box-shadow] duration-200 hover:border-teal-brand hover:bg-teal-brand hover:text-ink hover:shadow-glow motion-reduce:transition-none`
 
 // Column heading with a short teal accent underneath
 const headingClass =
@@ -172,6 +178,26 @@ function Footer() {
                   </Link>
                 </li>
               ))}
+              {/* Right after "Doctors": the full MGA catalogue on the main site */}
+              {group.heading === 'Explore' && (
+                <li className="pt-1">
+                  <a
+                    href={ALL_COURSES_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={allCoursesButtonClass}
+                  >
+                    MGA All Courses
+                    {/* Teal arrow; turns ink on hover so it stays visible on the teal fill */}
+                    <ArrowUpRight
+                      size={16}
+                      strokeWidth={2.5}
+                      aria-hidden="true"
+                      className="shrink-0 text-teal-brand transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink motion-reduce:transition-none"
+                    />
+                  </a>
+                </li>
+              )}
             </ul>
           </nav>
         ))}
@@ -208,9 +234,12 @@ function Footer() {
           floating chat button, so the extra right padding the reference footer used isn't needed. */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3.5 px-5 pt-[26px] pb-[max(26px,env(safe-area-inset-bottom))] text-center sm:px-7 lg:flex-row lg:justify-between lg:px-8 lg:text-left">
-          <p className="text-sm text-slate-400">
-            © {YEAR} Medical Global Academy. All rights reserved.
-          </p>
+          <div>
+            <p className="text-sm text-slate-400">
+              © {YEAR} Medical Global Academy. All rights reserved.
+            </p>
+            <p className="mt-1.5 text-xs leading-relaxed text-slate-400/80">{DISCLAIMER}</p>
+          </div>
           <nav aria-label="Legal">
             <ul className="flex flex-wrap justify-center gap-x-7 gap-y-2 lg:justify-end">
               {legalLinks.map((l) => (

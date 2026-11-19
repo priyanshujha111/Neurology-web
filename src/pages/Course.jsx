@@ -5,6 +5,7 @@ import { COUNSELLOR_TEL, buttonOutline, buttonPrimary, icons } from '../componen
 import FaqSection from '../components/FaqSection.jsx'
 import { typeLabel, useNeurologyCourses } from '../data/neurologyCourseApi.js'
 import { neurologyFaqs } from '../data/neurologyFaqs.js'
+import { DISCLAIMER } from '../data/siteLinks.js'
 
 // Filter buttons follow this order; any other type from the API is added after these.
 const TYPE_ORDER = ['Fellowship', 'Pg Diploma', 'Certificate']
@@ -88,6 +89,9 @@ function Course() {
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg motion-safe:animate-fade-up [animation-delay:200ms]">
             Fellowships, PG Diplomas and Certificates in neurology from Medical Global Academy.
             Choose a program to see its details and fees, or talk to a counsellor for guidance.
+          </p>
+          <p className="mt-5 max-w-2xl rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs leading-relaxed text-slate-300/90 sm:text-[13px] motion-safe:animate-fade-up [animation-delay:250ms]">
+            {DISCLAIMER}
           </p>
         </div>
       </section>

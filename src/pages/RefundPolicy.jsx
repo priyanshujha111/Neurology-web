@@ -89,7 +89,6 @@ function RefundPolicy() {
     <LegalLayout
       title="Refund Policy"
       documentTitle="Refund Policy | Medical Global Academy"
-      breadcrumb
       eyebrow="Legal"
       lastUpdated={LAST_UPDATED}
       intro={INTRO}

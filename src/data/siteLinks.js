@@ -6,6 +6,10 @@ export const PHONE_DISPLAY = '+91 9310027474'
 export const PHONE_HREF = 'tel:+919310027474'
 export const MAIN_SITE_URL = 'https://medicalglobalacademy.com/'
 
+// Shown in the Footer and on the Courses page; keep the wording identical in both
+export const DISCLAIMER =
+  'Professional skill-development programs; not a government postgraduate degree or NEET-PG seat.'
+
 // `type` must match the Courses page filter values (the API's own types)
 export const coursesOfType = (type) => `/courses?type=${encodeURIComponent(type)}`
 

@@ -124,7 +124,6 @@ function Terms() {
     <LegalLayout
       title="Terms & Conditions"
       documentTitle="Terms & Conditions | Medical Global Academy"
-      breadcrumb
       eyebrow="Legal"
       lastUpdated={LAST_UPDATED}
       intro={INTRO}

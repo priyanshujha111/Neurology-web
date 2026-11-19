@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Breadcrumbs, { BreadcrumbProvider } from "./components/Breadcrumbs";
 import NeurologyHome from "./pages/NeurologyHome";
 import About from "./pages/About";
 import Doctor from "./pages/Doctor";
@@ -26,9 +27,12 @@ function ScrollToTop() {
 
 export default function App() {
   return (
+    <BreadcrumbProvider>
     <div className="flex min-h-screen flex-col bg-white text-slate-900">
       <ScrollToTop />
       <Navbar />
+      {/* Every page except Home; the Navbar is sticky (in flow) on those pages, so nothing overlaps */}
+      <Breadcrumbs />
       {/* flex-1 pushes the footer to the bottom on short pages */}
       <main className="flex-1">
         <Routes>
@@ -46,5 +50,6 @@ export default function App() {
       </main>
       <Footer />
     </div>
+    </BreadcrumbProvider>
   );
 }

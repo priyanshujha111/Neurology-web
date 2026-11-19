@@ -142,7 +142,6 @@ function LegalLayout({
   documentTitle, // browser tab title
   sections,
   tocLabel, // accessible name for the table of contents
-  breadcrumb = false, // "Home / <title>"
   eyebrow, // small label above the h1, e.g. "Legal"
   subtitle, // short line under the h1
   lastUpdated, // shown only when not empty
@@ -223,26 +222,6 @@ function LegalLayout({
       <section className="relative overflow-hidden bg-neuro-dark text-white">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 dot-grid-dark" />
         <div className="relative mx-auto max-w-[1140px] px-4 py-14 sm:px-6 md:py-20">
-          {breadcrumb && (
-            <nav aria-label="Breadcrumb" className="mb-6">
-              <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
-                <li>
-                  <Link
-                    to="/"
-                    className="rounded-sm text-teal-brand underline-offset-4 hover:text-cyan-glow hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-slate-500">
-                  /
-                </li>
-                <li aria-current="page" className="text-white">
-                  {title}
-                </li>
-              </ol>
-            </nav>
-          )}
           {eyebrow && (
             <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-teal-brand">
               <span aria-hidden="true" className="h-px w-8 bg-teal-brand" />

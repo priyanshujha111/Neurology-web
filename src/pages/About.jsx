@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import StatsCounter from '../components/StatsCounter.jsx'
 import ValuesSection from '../components/ValuesSection.jsx'
 
 // Gradient text for highlighted words: teal-ink to violet on light backgrounds, teal to cyan on dark
@@ -483,6 +484,9 @@ function About() {
           <IconList items={approach} />
         </div>
       </section>
+
+      {/* Live course counts from the MGA course API */}
+      <StatsCounter />
 
       {/* 4. Specializations */}
       <section className="relative overflow-hidden bg-page py-20 md:py-24">

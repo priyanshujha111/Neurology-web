@@ -236,24 +236,6 @@ function Sitemap() {
       <section className="relative overflow-hidden bg-neuro-dark text-white">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 dot-grid-dark" />
         <div className="relative mx-auto max-w-[1140px] px-4 py-14 sm:px-6 md:py-20">
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
-              <li>
-                <Link
-                  to="/"
-                  className="rounded-sm text-teal-brand underline-offset-4 hover:text-cyan-glow hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                >
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-slate-500">
-                /
-              </li>
-              <li aria-current="page" className="text-white">
-                Sitemap
-              </li>
-            </ol>
-          </nav>
           <h1 className="font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">Sitemap</h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
             Every page on the site in one place, including all current neurology courses.
