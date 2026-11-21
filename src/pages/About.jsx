@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import StatsCounter from '../components/StatsCounter.jsx'
 import ValuesSection from '../components/ValuesSection.jsx'
+import { PHONE_HREF } from '../data/siteLinks.js'
 
 // Gradient text for highlighted words: teal-ink to violet on light backgrounds, teal to cyan on dark
 const gradientLight = 'bg-linear-to-r from-teal-ink to-violet-brand bg-clip-text text-transparent'
@@ -28,6 +29,12 @@ const stats = [
     icon: 'M12 3L2 8l10 5 10-5-10-5z M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5',
     value: '10K+',
     label: 'Students Trained',
+  },
+  {
+    // Calendar
+    icon: 'M3 5h18v16H3z M3 10h18 M8 3v4 M16 3v4',
+    value: '2020',
+    label: 'Founded',
   },
 ]
 
@@ -64,7 +71,7 @@ const offerings = [
   },
 ]
 
-const recognitions = ['CPD Accredited', 'ACTD Accredited', 'Global Recognition']
+const recognitions = ['CPD Accredited', 'ACTD Accredited', 'Global Recognition', 'Established 2020']
 
 // Teaching approach strip. Describes how the programs are delivered; no outcome claims.
 const approach = [
@@ -121,6 +128,69 @@ const specializations = [
     line: 'Primary headache, tremor, Parkinsonism and related conditions.',
     // Head with pain rays
     icon: 'M12 18a5 5 0 100-10 5 5 0 000 10z M12 2.5v2.5 M5.3 5.3l1.7 1.7 M18.7 5.3L17 7 M2.5 13H5 M19 13h2.5 M10 13h.01 M14 13h.01 M10.5 15.5h3',
+  },
+]
+
+// "How it works" steps. Describes the enrolment path only; no outcome claims.
+const steps = [
+  {
+    title: 'Choose your program',
+    line: 'Browse Fellowship, PG Diploma and Certificate options in neurology.',
+    icon: 'M11 19a8 8 0 100-16 8 8 0 000 16z M21 21l-4.35-4.35',
+  },
+  {
+    title: 'Enroll online',
+    line: 'Pick the attending or non-attending format that suits your schedule.',
+    icon: 'M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2 M9 11a4 4 0 100-8 4 4 0 000 8z M19 8v6 M22 11h-6',
+  },
+  {
+    title: 'Learn your way',
+    line: 'Online learning, live faculty-led sessions and recorded sessions where available.',
+    icon: 'M3 5h18v11H3z M8 20h8 M12 16v4 M10 8.5v4l3.5-2-3.5-2z',
+  },
+  {
+    title: 'Get certified',
+    line: 'Complete your program and receive your certification.',
+    icon: 'M12 15a6 6 0 100-12 6 6 0 000 12z M8.2 13.9L7 22l5-3 5 3-1.2-8.1',
+  },
+]
+
+// Mission / vision pair shown in the closing dark section
+const missionVision = [
+  {
+    label: 'Our Mission',
+    text: 'To equip healthcare professionals with the neurology knowledge, clinical judgement and confidence they need to deliver better care for every patient they treat.',
+    // Target
+    icon: 'M12 21a9 9 0 100-18 9 9 0 000 18z M12 17a5 5 0 100-10 5 5 0 000 10z M12 13a1 1 0 100-2 1 1 0 000 2z',
+  },
+  {
+    label: 'Our Vision',
+    text: 'To be a trusted name in neurology education, helping every doctor diagnose and treat neurological conditions with confidence.',
+    // Eye
+    icon: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z M12 15a3 3 0 100-6 3 3 0 000 6z',
+  },
+]
+
+// Eligibility groups. Degree lists as supplied by the academic team.
+// TODO: confirm these apply to every neurology program, or link to per-course eligibility.
+const eligibility = [
+  {
+    group: 'NMC',
+    degrees: ['MBBS', 'MD', 'MS', 'DGO', 'DCH', 'DNB', 'DM', 'MCh'],
+    // Stethoscope (same icon as the "Practicing Physicians" stat)
+    icon: 'M6 3v6a4 4 0 008 0V3 M10 13v3a5 5 0 0010 0v-2 M20 14a2 2 0 100-4 2 2 0 000 4z',
+  },
+  {
+    group: 'AYUSH',
+    degrees: ['BAMS', 'BHMS', 'BUMS'],
+    // Leaf
+    icon: 'M11 20A7 7 0 014 13c0-5 4-9 16-10-1 12-5 16-10 16z M4 21c4-4 7-7 11-11',
+  },
+  {
+    group: 'Dental',
+    degrees: ['BDS', 'MDS'],
+    // Tooth
+    icon: 'M12 5.5C10.5 4 8.5 3 6.5 3.5 4 4.2 3.5 7 4 9.5c.5 2.6 1.5 4.5 2 7 .4 2 1 4 2.3 4 1.6 0 1.7-3.5 2.2-5 .3-1 .7-1.5 1.5-1.5s1.2.5 1.5 1.5c.5 1.5.6 5 2.2 5 1.3 0 1.9-2 2.3-4 .5-2.5 1.5-4.4 2-7 .5-2.5 0-5.3-2.5-6-2-.5-4 .5-5.5 2z',
   },
 ]
 
@@ -388,13 +458,15 @@ function About() {
 
       {/* 2. Stat strip */}
       <section className="relative bg-white px-4 pt-16 sm:px-6 md:pt-20">
-        <div className="mx-auto grid max-w-[1140px] grid-cols-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card md:grid-cols-4">
+        {/* 1px gaps over a slate background draw the dividers, so any tile count works */}
+        <div className="mx-auto grid max-w-[1140px] grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 shadow-card md:grid-cols-5">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`flex flex-col items-center px-4 py-8 text-center md:py-10 ${
-                i % 2 === 0 ? 'border-r border-slate-200' : ''
-              } ${i < 2 ? 'border-b border-slate-200 md:border-b-0' : ''} ${i === 1 ? 'md:border-r' : ''}`}
+              // Odd tile out on mobile spans the full row
+              className={`flex flex-col items-center bg-white px-4 py-8 text-center md:py-10 ${
+                i === stats.length - 1 && stats.length % 2 === 1 ? 'col-span-2 md:col-span-1' : ''
+              }`}
             >
               <span className="text-teal-ink">
                 <Icon path={stat.icon} className="h-6 w-6" />
@@ -420,8 +492,9 @@ function About() {
             <AccentRule />
             {/* TODO: confirm the faculty claim ("experienced specialists") with the academic team. */}
             <p className="mt-6 leading-relaxed text-slate-600">
-              Medical Global Academy was founded on a commitment to clinical excellence. Our
-              neurology programs are shaped around what doctors meet in everyday practice, from
+              Since 2020, Medical Global Academy has been helping doctors build their clinical
+              practice, grounded in a commitment to clinical excellence. Our neurology programs
+              are shaped around what doctors meet in everyday practice, from
               acute stroke and seizures to headache, movement disorders and neuromuscular disease,
               with teaching from experienced specialists.
             </p>
@@ -485,6 +558,23 @@ function About() {
         </div>
       </section>
 
+      {/* Our faculty (copy matches the Doctors page intro) */}
+      <section className="relative overflow-hidden bg-page py-16 md:py-20">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 dot-grid-light" />
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <Eyebrow center>Our Faculty</Eyebrow>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.15] tracking-tight text-ink md:text-4xl">
+            Taught by <span className={gradientLight}>Experienced Specialists</span>
+          </h2>
+          <AccentRule center />
+          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-slate-600 md:text-lg">
+            Our faculty teach across the areas doctors meet in everyday neurology practice, from
+            stroke, epilepsy and headache to movement disorders and neuromuscular disease, with
+            practical guidance on EEG and EMG.
+          </p>
+        </div>
+      </section>
+
       {/* Live course counts from the MGA course API */}
       <StatsCounter />
 
@@ -499,7 +589,108 @@ function About() {
             </h2>
             <AccentRule />
           </div>
-          <IconList items={specializations} />
+          <div>
+            <IconList items={specializations} />
+            <Link
+              to="/courses"
+              className="group mt-6 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-teal-ink transition-colors duration-300 hover:text-violet-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-brand focus-visible:ring-offset-2"
+            >
+              View all programs
+              <svg viewBox="0 0 20 20" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 10h12 M11 5l5 5-5 5" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Eligibility: Values-style cards holding Credibility-style chips */}
+      <section className="relative overflow-hidden bg-neuro-dark py-20 text-white md:py-24">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 dot-grid-dark" />
+        <div className="relative mx-auto max-w-[1140px] px-4 sm:px-6">
+          <div className="text-center">
+            <Eyebrow light center>Eligibility</Eyebrow>
+            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight md:text-5xl">
+              Who Can <span className={gradientDark}>Enroll</span>
+            </h2>
+          </div>
+
+          <ul className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
+            {eligibility.map((g) => (
+              <li
+                key={g.group}
+                className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-teal-brand/50 hover:bg-white/[0.07] hover:shadow-glow"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-brand/15 text-teal-brand ring-1 ring-teal-brand/40 transition-colors duration-300 group-hover:bg-teal-brand group-hover:text-ink">
+                  <Icon path={g.icon} className="h-6 w-6" />
+                </span>
+                <h3 className="mt-6 font-display text-lg font-semibold">{g.group}</h3>
+                <ul aria-label={`${g.group} degrees`} className="mt-4 flex flex-wrap gap-2">
+                  {g.degrees.map((d) => (
+                    <li
+                      key={d}
+                      className="inline-flex items-center gap-1.5 rounded-md border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white"
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 text-cyan-glow" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M3 8.5l3.5 3.5 6.5-7" />
+                      </svg>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+                {/* Bottom accent line grows on hover (as in Our Values) */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-linear-to-r from-teal-brand to-violet-soft transition-transform duration-500 group-hover:scale-x-100"
+                />
+              </li>
+            ))}
+          </ul>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-400">
+            Eligibility can vary by program. Check the course page for its specific requirements.
+          </p>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="border-b border-slate-200 bg-white py-20 md:py-24">
+        <div className="mx-auto max-w-[1140px] px-4 sm:px-6">
+          <div className="text-center">
+            <Eyebrow center>How It Works</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-[1.15] tracking-tight text-ink md:text-4xl">
+              Four Steps to <span className={gradientLight}>Your Certification</span>
+            </h2>
+            <AccentRule center />
+          </div>
+
+          <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {steps.map((step, i) => (
+              <li
+                key={step.title}
+                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-brand/50"
+              >
+                {/* Teal-to-violet bar along the top edge */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-teal-brand to-violet-brand opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <div className="flex items-center justify-between">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-teal-brand/10 text-teal-ink ring-1 ring-teal-brand/20 transition-colors duration-300 group-hover:bg-teal-brand group-hover:text-ink">
+                    <Icon path={step.icon} />
+                  </span>
+                  <span aria-hidden="true" className={`font-display text-3xl font-bold lining-nums ${gradientLight}`}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3 className="mt-5 font-display font-semibold text-ink">
+                  <span className="sr-only">Step {i + 1}: </span>
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm leading-snug text-slate-600">{step.line}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -543,26 +734,45 @@ function About() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 dot-grid-dark" />
         <EegTrace className="opacity-[0.15]" />
 
-        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <Eyebrow light center>Our Mission</Eyebrow>
+        <div className="relative mx-auto max-w-[1140px] px-4 text-center sm:px-6">
+          <Eyebrow light center>Mission &amp; Vision</Eyebrow>
           <h2 className="mt-6 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-6xl">
             Empowering <span className={gradientDark}>Neurology Excellence</span>
           </h2>
           <AccentRule center />
-          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-slate-300 md:text-lg">
-            Our mission is to equip healthcare professionals with the neurology knowledge,
-            clinical judgement and confidence they need to deliver better care for every patient
-            they treat.
-          </p>
-          <Link
-            to="/courses"
-            className="group mt-10 inline-flex h-13 items-center justify-center gap-2 rounded-lg bg-teal-brand px-9 py-3.5 font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-glow hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-          >
-            Enroll Today
-            <svg viewBox="0 0 20 20" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M4 10h12 M11 5l5 5-5 5" />
-            </svg>
-          </Link>
+
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 text-left md:grid-cols-2 md:gap-6">
+            {missionVision.map((item) => (
+              <div
+                key={item.label}
+                className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-all duration-300 hover:border-teal-brand/50 hover:bg-white/[0.07] hover:shadow-glow md:p-8"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-teal-brand/15 text-teal-brand ring-1 ring-teal-brand/40 transition-colors duration-300 group-hover:bg-teal-brand group-hover:text-ink">
+                  <Icon path={item.icon} />
+                </span>
+                <h3 className="mt-5 font-display text-xl font-semibold text-white">{item.label}</h3>
+                <p className="mt-3 leading-relaxed text-slate-300">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              to="/courses"
+              className="group inline-flex h-13 w-full items-center justify-center gap-2 rounded-lg bg-teal-brand px-9 py-3.5 font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-glow hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:w-auto"
+            >
+              Explore Programs
+              <svg viewBox="0 0 20 20" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 10h12 M11 5l5 5-5 5" />
+              </svg>
+            </Link>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex h-13 w-full items-center justify-center rounded-lg border border-white/30 px-9 py-3.5 font-semibold text-white transition-colors hover:border-teal-brand hover:text-cyan-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:w-auto"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
     </div>
